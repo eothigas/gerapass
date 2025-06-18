@@ -33,11 +33,14 @@
         "padrao/jquery.slicknav.min",
     );
 
-    // Minifica e imprime o CSS no <head>
-    $tfp->tfpCssMinify(isset($tfp_css_paginas) ? $tfp_css_paginas : null);
+    // Minifica o css, e já embuti no head
+    $css_minificado = $tfp->tfpCssMinify(isset($tfp_css_paginas) ? $tfp_css_paginas : null);
 
-    // Scripts JS minificados: padrão
-    $tfp->tfpJsMinify($tfp_js_paginas ?? null);
+    // Para imprimir os scripts inline (JS padrão + scripts extras da página)
+    $arquivos_js_para_imprimir = $tfp->tfp_js_padrao;
+    if (isset($tfp_js_paginas) && is_array($tfp_js_paginas)) {
+        $arquivos_js_para_imprimir = array_merge($arquivos_js_para_imprimir, $tfp_js_paginas);
+    }
 
     include "webdev/head.webdev.min.php";
 ?>

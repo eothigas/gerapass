@@ -91,5 +91,25 @@
         {
             return file_exists($tfp_caminho) ? file_get_contents($tfp_caminho) : '';
         }
+
+        /**
+         * Imprime inline os scripts JS a partir do array informado,
+         * lendo arquivos dentro de assets/js/
+         * Cada arquivo deve ser passado sem a extensão .js, pode conter subpastas (ex: "customJS/slick_nav")
+         * @param array $arquivos
+         * @return void
+         */
+        public function imprimirScriptsInline(array $arquivos)
+        {
+            $base_dir = $this->tfp_assets_dir . "js/";
+
+            foreach ($arquivos as $arquivo) {
+                $caminho = $base_dir . $arquivo . ".js";
+                if (is_file($caminho)) {
+                    $conteudo = $this->tfpCarregaArquivo($caminho);
+                    echo "<script>{$conteudo}</script>\n";
+                }
+            }
+        }
     }
 ?>

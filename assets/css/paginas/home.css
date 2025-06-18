@@ -1,3 +1,22 @@
-#banner {
-    /* border: 2px solid red; */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.principal {
+    justify-content: center;
+    border: 2px solid var(--secondary);
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.principal input {
+    border: 2px solid var(--secondary);
+
+}
+
+.print {
+    
 }
