@@ -1,10 +1,11 @@
-function gerarSenhaPersonalizada(tamanho, usarMaiusculas, usarMinusculas, usarNumeros, usarSimbolos) {
+document.addEventListener('DOMContentLoaded', () => {
+
+  function gerarSenhaPersonalizada(tamanho, usarMaiusculas, usarMinusculas, usarNumeros, usarSimbolos) {
     let caracteres = '';
     if (usarMinusculas) caracteres += 'abcdefghijklmnopqrstuvwxyz';
     if (usarMaiusculas) caracteres += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     if (usarNumeros) caracteres += '0123456789';
     if (usarSimbolos) caracteres += '!@#$%^&*()-_=+[]{}<>?/';
-
     if (caracteres.length === 0) return '⚠️ Selecione pelo menos um tipo de caractere.';
 
     let senha = '';
@@ -34,8 +35,6 @@ function gerarSenhaPersonalizada(tamanho, usarMaiusculas, usarMinusculas, usarNu
       return;
     }
     document.getElementById('senha').value = senha;
-
-    salvarSenha(senha);
   });
 
   document.getElementById('copiar').addEventListener('click', () => {
@@ -51,37 +50,43 @@ function gerarSenhaPersonalizada(tamanho, usarMaiusculas, usarMinusculas, usarNu
     });
   });
 
-function coletarDados() {
-  const site = document.getElementById('site').value.trim();
-  const login = document.getElementById('login').value.trim();
-  const senha = document.getElementById('senha').value.trim();
+  async function coletarDadosESalvar() {
+    const site = document.getElementById('site').value.trim();
+    const login = document.getElementById('login').value.trim();
+    const senha = document.getElementById('senha').value.trim();
 
-  if (!site || !login || !senha) {
-    alert("Preencha todos os campos obrigatórios e gere uma senha.");
-    return;
+    if (!site || !login || !senha) {
+      alert("Preencha todos os campos obrigatórios e gere uma senha.");
+      return;
+    }
+
+    try {
+      const { data, error } = await supabaseClient
+        .from('usuarios')
+        .insert([{
+          site: site,
+          login: login,
+          senha: senha
+        }]);
+
+      if (error) {
+        console.error('Erro Supabase:', error);
+        alert(`Erro ao salvar no Supabase:\n${error.message || JSON.stringify(error)}`);
+      } else {
+        alert('Dados salvos com sucesso!');
+      }
+    } catch (err) {
+      console.error('Erro inesperado ao salvar:', err);
+      alert(`Erro inesperado ao processar os dados:\n${err.message || err}`);
+    }
   }
 
-  const dados = {
-    site: site,
-    login: login,
-    senha: senha,
-    criadoEm: new Date().toISOString()
-  };
-
-  console.log(dados);
-  return dados;
-}
-
-document.getElementById('salvar').addEventListener('click', () => {
-  const senhaInput = document.getElementById('senha');
-  if (!senhaInput.value) {
-    alert('Nenhuma senha para salvar!');
-    return;
-  }
-  senhaInput.select();
-  senhaInput.setSelectionRange(0, 99999);
-  navigator.clipboard.writeText(senhaInput.value).then(() => {
-    alert('Dados Salvos!');
-    coletarDados();
+  document.getElementById('salvar').addEventListener('click', () => {
+    const senhaInput = document.getElementById('senha');
+    if (!senhaInput.value) {
+      alert('Nenhuma senha para salvar!');
+      return;
+    }
+    coletarDadosESalvar();
   });
 });
