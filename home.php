@@ -21,25 +21,39 @@
 
     <main>
         <div class="container">
-            <div class="principal">
-                <h2>Gerar Senha</h2>
-                <div class="print">
-                    <label for="tamanho">Tamanho da senha:</label>
-                    <input type="number" id="tamanho" max="32"
-                    oninput="this.value = Math.max(0, Math.min(32, this.value))"
-                    required>
+            <div class="row gap-2 flex">
+                <div class="col-sm-10 col-md-10 col-lg-10 acesso">
+                    <h2>Informações de Acesso</h2>
+                    
+                    <label for="site">Insira o nome do Site: *</label>
+                    <input type="text" id="site">
 
-                    <div class="checkboxes">
-                        <label><input type="checkbox" id="maiusculas"> Incluir letras maiúsculas</label>
-                        <label><input type="checkbox" id="minusculas"> Incluir letras minúsculas</label>
-                        <label><input type="checkbox" id="numeros"> Incluir números</label>
-                        <label><input type="checkbox" id="simbolos"> Incluir símbolos</label>
+                    <label for="login">Insira o nome de Login: *</label>
+                    <input type="text" id="login">
+                </div>
+                <div class="col-sm-10 col-md-10 col-lg-10 principal">
+                    <h2>Gerar Senha</h2>
+                    <div class="print">
+                        <label for="tamanho">Tamanho da senha: *</label>
+                        <input type="number" id="tamanho" max="32"
+                        oninput="this.value = Math.max(0, Math.min(32, this.value))"
+                        required placeholder="Digite um número de 4 a 32">
+
+                        <div class="checkboxes">
+                            <p>Selecione os tipos de caracteres desejados: *</p>
+                            <label><input type="checkbox" id="maiusculas"> Incluir letras maiúsculas</label>
+                            <label><input type="checkbox" id="minusculas"> Incluir letras minúsculas</label>
+                            <label><input type="checkbox" id="numeros"> Incluir números</label>
+                            <label><input type="checkbox" id="simbolos"> Incluir símbolos</label>
+                        </div>
+                        <input type="text" id="senha" readonly placeholder="Sua senha aparecerá aqui!">
+                    
+                        <div class="flex buttons">
+                            <button id="gerar">Gerar Senha</button> 
+                            <button id="salvar">Salvar Senha</button> 
+                            <button id="copiar">Copiar</button>
+                        </div>
                     </div>
-
-                    <button id="gerar">Gerar Senha</button>
-                    <input type="text" id="senha" readonly>
-
-                    <button id="copiar">Copiar</button>
                 </div>
             </div>
         </div>

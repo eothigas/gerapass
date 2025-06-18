@@ -50,3 +50,38 @@ function gerarSenhaPersonalizada(tamanho, usarMaiusculas, usarMinusculas, usarNu
       alert('Senha copiada para a área de transferência!');
     });
   });
+
+function coletarDados() {
+  const site = document.getElementById('site').value.trim();
+  const login = document.getElementById('login').value.trim();
+  const senha = document.getElementById('senha').value.trim();
+
+  if (!site || !login || !senha) {
+    alert("Preencha todos os campos obrigatórios e gere uma senha.");
+    return;
+  }
+
+  const dados = {
+    site: site,
+    login: login,
+    senha: senha,
+    criadoEm: new Date().toISOString()
+  };
+
+  console.log(dados);
+  return dados;
+}
+
+document.getElementById('salvar').addEventListener('click', () => {
+  const senhaInput = document.getElementById('senha');
+  if (!senhaInput.value) {
+    alert('Nenhuma senha para salvar!');
+    return;
+  }
+  senhaInput.select();
+  senhaInput.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(senhaInput.value).then(() => {
+    alert('Dados Salvos!');
+    coletarDados();
+  });
+});
