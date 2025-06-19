@@ -49,44 +49,4 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Senha copiada para a área de transferência!');
     });
   });
-
-  async function coletarDadosESalvar() {
-    const site = document.getElementById('site').value.trim();
-    const login = document.getElementById('login').value.trim();
-    const senha = document.getElementById('senha').value.trim();
-
-    if (!site || !login || !senha) {
-      alert("Preencha todos os campos obrigatórios e gere uma senha.");
-      return;
-    }
-
-    try {
-      const { data, error } = await supabaseClient
-        .from('usuarios')
-        .insert([{
-          site: site,
-          login: login,
-          senha: senha
-        }]);
-
-      if (error) {
-        console.error('Erro Supabase:', error);
-        alert(`Erro ao salvar no Supabase:\n${error.message || JSON.stringify(error)}`);
-      } else {
-        alert('Dados salvos com sucesso!');
-      }
-    } catch (err) {
-      console.error('Erro inesperado ao salvar:', err);
-      alert(`Erro inesperado ao processar os dados:\n${err.message || err}`);
-    }
-  }
-
-  document.getElementById('salvar').addEventListener('click', () => {
-    const senhaInput = document.getElementById('senha');
-    if (!senhaInput.value) {
-      alert('Nenhuma senha para salvar!');
-      return;
-    }
-    coletarDadosESalvar();
-  });
 });
