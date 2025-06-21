@@ -5,6 +5,7 @@
     --main-strong: rgb(34, 40, 49);
     --secondary: rgb(118, 171, 174);
     --white: rgb(238, 238, 238);
+    --bg-last: rgb(20, 31, 49);
 
     --font: 'Montserrat', sans-serif;
 }
@@ -19,10 +20,6 @@ a:hover {
 body {
     overflow-x: hidden;
     background-color: var(--white) !important;
-}
-
-main {
-  height: 100dvh;
 }
 
 header {

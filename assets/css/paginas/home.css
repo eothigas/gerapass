@@ -1,57 +1,142 @@
 main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+
+  padding: 0 0 100px;
+  height: auto !important;
 }
 
-.principal, .acesso {
-    border: 2px solid var(--secondary);
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0px 0px 40px rgba(0,0,0, .2);
+body {
+  overflow-x: hidden !important;
 }
 
-input {
-    border: 2px solid var(--secondary);
-    padding: 5px;
+#home {
+  padding: 100px 0 25px;
 }
 
-#senha {
-    cursor: default;
+#home h2, h3, h4, p {
+  color: var(--white);
 }
 
-.print {
-    display: flex;
-    flex-direction: column;
+#present h2, h3, h4, p {
+  color: var(--white);
 }
 
-.checkboxes {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 20px 0;
+#present span{
+  color: var(--secondary);
+  font-weight: 700;
 }
 
-.checkboxes p {
-    margin: 0;
+.welcome {
+  background-color: var(--main);
+  max-width: 300px;
+  overflow: hidden;
+  padding: 10px 15px 0px;
+  border-radius: 10px;
+  /* height: 150px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.buttons {
-    align-items: center;
-    justify-content: space-between;
-    margin: 0;
+@media screen and (max-width: 768px) {
+  #home {
+    padding-top: 25px;
+  }
+  .welcome {
+    max-width: none !important;
+    width: 100%;
+  }
+
+  #home .row {
+    gap: 20px;
+  }
 }
 
-.buttons button {
-    padding: 3px 6px;
-    color: black;
-    /* border-radius: 10px; */
-    border: 2px solid var(--secondary);
-    margin: 10px 0;
+#home .card {
+  width: auto;
+  height: 150px;
+  background: rgb(17, 4, 134);
+  border-radius: 15px;
+  display: flex;
+  color: white;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
 }
 
-.container {
-    width: 80%;
+.time-text {
+  font-size: 50px;
+  margin-top: 0px;
+  margin-left: 15px;
+  font-weight: 600;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.time-sub-text {
+  font-size: 15px;
+  margin-left: 5px;
+}
+
+.day-text {
+  font-size: 18px;
+  margin-top: 0px;
+  margin-left: 15px;
+  font-weight: 500;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.moon {
+  font-size: 25px;
+  position: absolute;
+  right: 12px;
+  top: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+#home .card:hover > .moon {
+  font-size: 27px;
+}
+
+.sun {
+  font-size: 25px;
+  position: absolute;
+  right: 12px;
+  top: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+#home .card:hover > .sun {
+  font-size: 27px;
+}
+
+/* Ícones */
+.show {
+    display: inline;
+}
+.hide {
+    display: none;
+}
+
+/* Temas do card */
+#home .card-dia {
+    background-color: #f9f9f9;
+    border: 2px solid var(--main);
+    color: var(--main);
+    box-shadow: rgb(0,0,0,0.4) 5px 5px 20px;
+}
+
+#home .card-dia i {
+  color: orange;
+}
+
+#home .card-noite {
+  background: linear-gradient(to right, rgb(20, 30, 48), rgb(36, 59, 85));
+  color: #f1f1f1;
+  box-shadow: rgb(0,0,0,0.4) 5px 5px 20px;
 }

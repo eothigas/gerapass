@@ -30,6 +30,7 @@
     $tfp->tfp_js_padrao = array(
         "padrao/jquery-3.6.0.min",
         "padrao/jquery.slicknav.min",
+        "padrao/cookies",
     );
 
     // Minifica o css, e já embuti no head

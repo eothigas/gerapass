@@ -1,0 +1,60 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.principal, .acesso {
+    border: 2px solid var(--secondary);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 40px rgba(0,0,0, .2);
+}
+
+input {
+    border: 2px solid var(--secondary);
+    padding: 5px;
+}
+
+#senha {
+    cursor: default;
+}
+
+.print {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkboxes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.checkboxes p {
+    margin: 0;
+}
+
+.buttons {
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.buttons button {
+    padding: 3px 6px;
+    color: black;
+    /* border-radius: 10px; */
+    border: 2px solid var(--secondary);
+    margin: 10px 0;
+}
+
+.container {
+    width: 80%;
+}
+
+/* Home 2 */
+

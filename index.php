@@ -21,7 +21,7 @@
     <main>
         <div class="container">
             <div class="flex">
-                <form class="form_main" method="POST" action="/gerapass/includes/actions/login">
+                <form class="form_main" method="POST" action="<?php echo $url; ?>includes/actions/login">
                     <p class="heading">Login</p>
                     <div class="inputContainer">
                         <svg viewBox="0 0 16 16" fill="#2e2e2e" height="16" width="16" xmlns="http://www.w3.org/2000/svg" class="inputIcon">
@@ -38,6 +38,9 @@
                     </div>
             
                     <button id="button">Entrar</button>
+                    
+                    
+
                 </form>
             </div>
         </div>

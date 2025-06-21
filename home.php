@@ -8,68 +8,57 @@
 
     $tfp_css_paginas = array(
         "paginas/home",
+        "elementos/bar-btn",
     );
 
     $tfp_js_paginas = [
-        "customJS/gerarSenha",
+        // "customJS/gerarSenha",
     ];
     
     include "includes/configuracoes.php";
+    include "includes/date-widget.php";
+
 ?>
 </head>
-<body>
+<body class="bg-dark">
 
-    <main>
-        <div class="container">
-            <div class="row gap-2 flex">
-                <form method="POST" action="/gerapass/includes/actions/save_login" class="row gap-2 flex">
-                    <div class="col-sm-10 col-md-10 col-lg-10 acesso">
-                        <h2>Informações de Acesso</h2>
-                        
-                        <label for="site">Insira o nome do Site: *</label>
-                        <input type="text" id="site" name="site" required>
-                        
-                        <label for="login">Insira o nome de Login: *</label>
-                        <input type="text" id="login" name="login" required>
+    <main> 
+        <div class="container" id="home">
+            <div class="row flex align-items-start">
+                <div class="col-10 col-md-9 col-lg-9">
+                    <div class="welcome">
+                        <h4>Bem vindo</h4>
+                        <h2 style="color: var(--secondary);"><?php echo $_SESSION['nome'] ?? 'Usuário' ?>!</h2>
                     </div>
-
-                    <div class="col-sm-10 col-md-10 col-lg-10 principal">
-                        <h2>Gerar Senha</h2>
-                        <div class="print">
-                        <label for="tamanho">Tamanho da senha: *</label>
-                        <input type="number" id="tamanho" name="tamanho" max="32" min="4" required
-                                oninput="this.value = Math.max(4, Math.min(32, this.value))"
-                                placeholder="Digite um número de 4 a 32">
-
-                        <div class="checkboxes">
-                            <p>Selecione os tipos de caracteres desejados: *</p>
-                            <label><input type="checkbox" id="maiusculas" checked> Incluir letras maiúsculas</label>
-                            <label><input type="checkbox" id="minusculas" checked> Incluir letras minúsculas</label>
-                            <label><input type="checkbox" id="numeros" checked> Incluir números</label>
-                            <label><input type="checkbox" id="simbolos"> Incluir símbolos</label>
-                        </div>
-                        <hr>
-                        <h2>Sua senha:</h2>
-                        <input type="text" id="senha" name="senha" readonly placeholder="Sua senha aparecerá aqui!" required>
-                        
-                        <div class="flex buttons">
-                            <button type="button" id="gerar">Gerar Senha</button>
-                            <button type="submit" id="salvar">Salvar Senha</button>
-                            <button type="button" id="copiar">Copiar</button>
-                        </div>
-                        </div>
+                </div>
+                <div class="col-10 col-md-3 col-lg-3">
+                    <div class="card <?php echo $classes['card_class']; ?>">
+                        <p class="time-text"><span><?php echo horaAtualComFuso($fuso); ?></span></p>
+                        <p class="day-text"><?php echo diaFormatadoComFuso($fuso); ?></p>
+                        <i class="bi bi-moon moon <?php echo $classes['moon_class']; ?>"></i>
+                        <i class="bi bi-sun sun <?php echo $classes['sun_class']; ?>"></i>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-    </main>
+
+        <div class="container" id="present">
+            <div class="row flex">
+                <div class="col-10 col-md-4">
+                    <img src="<?php echo $url;?>imagens/main/security.png" alt="Imagem de segurança" class="img-responsive">
+                </div>
+                <div class="col-10 col-md-8">
+                    <h2>Sistema <span>GeraPass</span></h2>
+                    <p>Sistema desenvolvido para gerenciamento, criação e segurança de senhas.</p>
+                </div>
+            </div>
+        </div>
+ 
+        <?php include "includes/bar-buttons.php"; ?>
     
-    <!-- Seu JS minificado carregado após as bibliotecas -->
     <script>
     <?php echo $tfp->tfpJsMinify($tfp_js_paginas ?? null); ?>
     </script>
-
-    <!-- Bootstrap -->
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
