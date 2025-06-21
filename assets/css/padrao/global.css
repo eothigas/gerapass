@@ -19,7 +19,7 @@ a:hover {
 
 body {
     overflow-x: hidden;
-    background-color: var(--white) !important;
+    background-color: #333;
 }
 
 header {

@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "GeraPass - Extensão",
+  "version": "1.0",
+  "description": "Gerenciador de senhas integrado ao sistema GeraPass.",
+  "permissions": ["storage", "scripting", "activeTab"],
+  "host_permissions": ["https://tfportifolio.com.br/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  }
+}

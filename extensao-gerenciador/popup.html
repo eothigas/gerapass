@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Gerenciador de Senhas</title>
+<style>
+
+    :root {
+        --main: rgb(49, 54, 63);
+        --main-strong: rgb(34, 40, 49);
+        --secondary: rgb(118, 171, 174);
+        --white: rgb(238, 238, 238);
+        --bg-last: rgb(20, 31, 49);
+
+        --font: 'Montserrat', sans-serif;
+    }
+
+    body {
+        background-color: #31363f;
+        color: white;
+        /* display: flex; */
+        /* flex-direction: column; */
+        border-radius: 10px;
+    }
+
+    .container button {
+        margin-top: 10px;
+        border: 2px solid ;
+        background-color: transparent;
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        /* border-radius: 10px; */
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+    }
+
+    .container button:hover {
+        background-color:var(--secondary);
+        color: var(--white);
+    }
+
+    .container input{
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid rgb(173, 173, 173);
+        margin: 10px 0;
+        color: var(--white);
+        font-size: 16px;
+    }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2 id="usuario-logado"></h2>
+
+    <label for="usuario">E-mail:</label>
+    <input type="text" id="usuario" />
+
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha" />
+
+    <button id="btn-login">Entrar</button>
+    <button id="btn-sair" style="display:none;">Sair</button>
+
+    <p id="msg" style="color:red;"></p>
+
+    <div id="lista-senhas"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

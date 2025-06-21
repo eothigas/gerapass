@@ -54,7 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: ../../home");
         exit();
     } else {
-        die("E-mail ou senha inválidos.");
+        $_SESSION['erro_login'] = "E-mail ou senha inválidos.";
+        header("Location: ../../");
+        exit();
     }
 }
 ?>

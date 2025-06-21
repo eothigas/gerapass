@@ -39,8 +39,12 @@
             
                     <button id="button">Entrar</button>
                     
-                    
-
+                    <?php if (isset($_SESSION['erro_login'])): ?>
+                        <div id="mensagem-erro" class="p-3 alert alert-danger alert-dismissible fade show" role="alert">
+                            <?= $_SESSION['erro_login']; ?>
+                        </div>
+                        <?php unset($_SESSION['erro_login']); ?>
+                    <?php endif; ?>
                 </form>
             </div>
         </div>
@@ -50,5 +54,19 @@
         <?php echo $tfp->tfpJsMinify($tfp_js_paginas ?? null); ?>
     </script>
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Fade-out após 8 segundos
+        setTimeout(() => {
+            const alert = document.getElementById('mensagem-erro');
+            if (alert) {
+                alert.classList.remove('show');
+                setTimeout(() => {
+                    alert.remove(); 
+                }, 500); 
+            }
+        }, 8000); 
+    </script>
+
 </body>
 </html>
