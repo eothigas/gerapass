@@ -8,6 +8,8 @@
 
     $tfp_css_paginas = array(
         "paginas/novo-login",
+        "elementos/widget",
+        "elementos/bar-btn",
     );
 
     $tfp_js_paginas = [
@@ -15,59 +17,82 @@
     ];
     
     include "includes/configuracoes.php";
+    include "includes/date-widget.php";
+
 ?>
 </head>
-<body>
+<body class="bg-dark">
 
     <main>
+
+        <?php include "includes/widget.php"; ?>
         <div class="container">
-            <div class="row gap-2 flex">
-                <form method="POST" action="<?php echo $url; ?>includes/actions/save_login" class="row gap-2 flex">
-                    <div class="col-sm-10 col-md-10 col-lg-10 acesso">
+            <hr class="divider-top">
+
+            <h2>Novo Login</h2>
+            <div class="row flex">
+                <form method="POST" action="<?php echo $url; ?>includes/actions/save_login" class="row flex main-form">
+                    <div class=" col-12 acesso">
                         <h2>Informações de Acesso</h2>
-                        
+
                         <label for="site">Insira o nome do Site: *</label>
-                        <input type="text" id="site" name="site" required>
+                        <input type="text" id="site" name="site" required placeholder="ex: google.com">
                         
                         <label for="login">Insira o nome de Login: *</label>
-                        <input type="text" id="login" name="login" required>
-                    </div>
-
-                    <div class="col-sm-10 col-md-10 col-lg-10 principal">
-                        <h2>Gerar Senha</h2>
-                        <div class="print">
-                        <label for="tamanho">Tamanho da senha: *</label>
-                        <input type="number" id="tamanho" name="tamanho" max="32" min="4" required
-                                oninput="this.value = Math.max(4, Math.min(32, this.value))"
-                                placeholder="Digite um número de 4 a 32">
-
-                        <div class="checkboxes">
-                            <p>Selecione os tipos de caracteres desejados: *</p>
-                            <label><input type="checkbox" id="maiusculas" checked> Incluir letras maiúsculas</label>
-                            <label><input type="checkbox" id="minusculas" checked> Incluir letras minúsculas</label>
-                            <label><input type="checkbox" id="numeros" checked> Incluir números</label>
-                            <label><input type="checkbox" id="simbolos"> Incluir símbolos</label>
-                        </div>
-                        <hr>
-                        <h2>Sua senha:</h2>
-                        <input type="text" id="senha" name="senha" readonly placeholder="Sua senha aparecerá aqui!" required>
+                        <input type="text" id="login" name="login" required placeholder="ex: usuario@usuario.com">
                         
-                        <div class="flex buttons">
-                            <button type="button" id="gerar">Gerar Senha</button>
-                            <button type="submit" id="salvar">Salvar Senha</button>
-                            <button type="button" id="copiar">Copiar</button>
-                        </div>
+                        <hr>
+
+                        <h3>Gerar Senha</h3>
+                        <div class="print">
+
+                            <div class="checkboxes">
+                                <p>Selecione os tipos de caracteres desejados: *</p>
+                                <label><input type="checkbox" id="maiusculas" > Incluir letras maiúsculas</label>
+                                <label><input type="checkbox" id="minusculas" > Incluir letras minúsculas</label>
+                                <label><input type="checkbox" id="numeros" > Incluir números</label>
+                                <label><input type="checkbox" id="simbolos"> Incluir símbolos</label>
+                            </div>
+
+                            <label for="tamanho">Tamanho da senha: *</label>
+                            <input type="number" id="tamanho" name="tamanho" required
+                                    placeholder="Digite um número de até 32">
+                            <hr>
+                            <h3>Sua senha:</h3>
+                            <div class="flex-container">
+                                <input type="text" id="senha" name="senha" readonly placeholder="Sua senha aparecerá aqui!" required>
+                                <button type="button" id="gerar">Gerar Senha</button>
+                            </div>
+                    
+                        
+                            <div class="flex buttons">
+                                <button type="submit" id="salvar">Criar Login</button>
+                                <button type="button" id="copiar">Copiar</button>
+                            </div>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
+        <?php include "includes/bar-buttons.php"; ?>
+
     </main>
     
     <script>
     <?php echo $tfp->tfpJsMinify($tfp_js_paginas ?? null); ?>
     </script>
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const msg = document.getElementById('mensagem-save');
+            if (msg) {
+                setTimeout(() => {
+                msg.style.display = 'none';
+                }, 4000);
+            }
+        });
+    </script>
 
 </body>
 </html>

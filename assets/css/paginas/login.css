@@ -116,3 +116,20 @@ main {
   padding: 8px 15px;
   border-radius: 20px;
 }
+
+.mensagem {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.mensagem.sucesso {
+    background-color: #155724;
+    color: var(--white);
+}
+
+.mensagem.erro {
+    background-color: #721c24;
+    color: var(--white);
+}

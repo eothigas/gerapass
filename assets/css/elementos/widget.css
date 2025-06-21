@@ -1,0 +1,133 @@
+main {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+
+  padding: 0 0 100px;
+  height: auto !important;
+}
+
+#widget {
+  padding: 100px 0 25px;
+}
+
+#widget h2, h3, h4, p {
+  color: var(--white);
+}
+
+.welcome {
+  background-color: var(--main);
+  max-width: 300px;
+  overflow: hidden;
+  padding: 10px 15px 0px;
+  border-radius: 10px;
+  /* height: 150px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  #widget {
+    padding-top: 25px;
+  }
+  .welcome {
+    max-width: none !important;
+    width: 100%;
+  }
+
+  #widget .row {
+    gap: 20px;
+  }
+}
+
+#widget .card {
+  width: auto;
+  height: 150px;
+  background: rgb(17, 4, 134);
+  border-radius: 15px;
+  display: flex;
+  color: var(--main);
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.time-text {
+  font-size: 50px;
+  margin-top: 0px;
+  margin-left: 15px;
+  font-weight: 600;
+  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+}
+
+.time-sub-text {
+  font-size: 15px;
+  margin-left: 5px;
+}
+
+.day-text {
+  font-size: 18px;
+  margin-top: 0px;
+  margin-left: 15px;
+  font-weight: 500;
+  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+}
+
+.moon {
+  font-size: 25px;
+  position: absolute;
+  right: 12px;
+  top: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+#widget .card:hover > .moon {
+  font-size: 27px;
+}
+
+.sun {
+  font-size: 25px;
+  position: absolute;
+  right: 12px;
+  top: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+#widget .card:hover > .sun {
+  font-size: 27px;
+}
+
+/* Ícones */
+.show {
+    display: inline;
+}
+.hide {
+    display: none;
+}
+
+/* Temas do card */
+#widget .card-dia {
+    background: linear-gradient(135deg, #FFEFBA 0%, #FFFFFF 100%);
+    border: 2px solid var(--main);
+    box-shadow: rgb(0,0,0,0.4) 5px 5px 20px;
+}
+
+#widget .card-dia .time-text, 
+#widget .card-dia .day-text {
+    color: var(--main) !important;
+}
+
+#widget .card-dia i {
+  color: orange;
+}
+
+#widget .card-noite {
+  background: linear-gradient(to right, rgb(20, 30, 48), rgb(36, 59, 85));
+  color: #f1f1f1;
+  box-shadow: rgb(0,0,0,0.4) 5px 5px 20px;
+}

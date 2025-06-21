@@ -1,3 +1,12 @@
+<div id="mensagem" class="mensagem"></div>
+
+<?php if (isset($_SESSION['mensagem'])): ?>
+    <div id="mensagem-save" class="mensagem <?= $_SESSION['mensagem']['tipo'] ?>">
+        <?= htmlspecialchars($_SESSION['mensagem']['texto']) ?>
+    </div>
+    <?php unset($_SESSION['mensagem']); ?>
+<?php endif; ?>
+
 <div class="button-container">
     <a href="<?php echo $url;?>home" class="button" title="Home">
         <i class="bi bi-house icon"></i>
